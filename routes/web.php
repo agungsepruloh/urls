@@ -14,7 +14,6 @@
 Route::get('/', function () {
     return view('pages.index');
 });
-Route::post('/', 'UrlsController@store');
 
 Auth::routes();
 
@@ -25,3 +24,4 @@ Route::get('/about', function() {
 Route::get('/contact', function() {
     return view('pages.contact');
 });
+Route::post('/short', 'UrlsController@store');

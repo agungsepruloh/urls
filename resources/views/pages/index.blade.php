@@ -10,7 +10,7 @@
             <input type="submit" value="Short URL" class="btn btn-success mt-2">
         </form> --}}
 
-        {!!Form::open(['action' => 'UrlsController@store', 'method' => 'post'])!!}
+        {!!Form::open(['action' => 'UrlsController@hash', 'method' => 'post'])!!}
             {{Form::text('url', '', ['class' => 'form-control', 'placeholder' => 'Input your URL here'])}}
             {{Form::submit('Short URL', ['class' => 'btn btn-success mt-2'])}}
         {!!Form::close()!!}

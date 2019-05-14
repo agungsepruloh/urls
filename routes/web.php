@@ -24,4 +24,5 @@ Route::get('/about', function() {
 Route::get('/contact', function() {
     return view('pages.contact');
 });
-Route::post('/short', 'UrlsController@store');
+Route::post('/hash', 'UrlsController@hash');
+Route::post('/shorted', 'UrlsController@store');

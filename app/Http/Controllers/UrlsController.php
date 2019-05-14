@@ -10,7 +10,7 @@ use App\Link;
 class UrlsController extends Controller
 {
     
-    public function store(Request $request) {
+    public function hash(Request $request) {
 
         // Validator input
         $this->validate($request, [
@@ -19,19 +19,25 @@ class UrlsController extends Controller
 
         // checking data from database
         $url = Link::whereUrl($request->url)->first();
+        $hash = $url['hash'];
 
         if ($url == null) {
             $hash = $this->generateShortUrl();
             
-            Link::create([
-                'url' => $request->url,
-                'hash' => $hash
-            ]);
+            // Link::create([
+            //     'url' => $request->url,
+            //     'hash' => $hash
+            // ]);
 
             $url = Link::whereUrl($request->url)->first();
         }
 
-        return view('pages.result', compact('url'));
+        $data = [
+            'url' => $request->url,
+            'hash' => $hash
+        ];
+
+        return view('pages.hash')->with('data', $data);
     }
 
     public function generateShortUrl() {
@@ -43,5 +49,9 @@ class UrlsController extends Controller
         }
 
         return $result;
+    }
+
+    public function store() {
+        
     }
 }
